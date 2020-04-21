@@ -17,6 +17,7 @@
             var fshader, vshader;
 
             var geometry1, material1, mesh1;
+            var geometry2, material2, mesh2;
 
             function addCoolCube() {
                 if(count == 2) {
@@ -36,6 +37,24 @@
                     mesh1 = new THREE.Mesh(geometry1, material1);
                     mesh1.position.x = 2;
                     scene.add(mesh1);
+                }
+                if(count == 3) {
+                    geometry2 = new THREE.BoxGeometry(1, 1, 1);
+                    let uniforms = {
+                            colorB: {type: 'vec3', value: new 
+                                     THREE.Color(0xACB6E5)},
+                            colorA: {type: 'vec3', value: new 
+                                    THREE.Color(0x74ebd5)}
+                        };
+
+                    material2 =  new THREE.ShaderMaterial({
+                        uniforms: uniforms,
+                        fragmentShader: fshader,
+                        vertexShader: vshader,
+                        precision: "mediump"});
+                    mesh2 = new THREE.Mesh(geometry2, material2);
+                    mesh2.position.x = -2;
+                    scene.add(mesh2);
                 }
             }
 
@@ -75,19 +94,46 @@
                         console.error('An error happened');
                     });
 
+            // RAINBOW FRAG SHADER CUBE
+            loader.load('shaders/fragmentShaderRainbow.frag',
+                // onLoad callback
+                    function (data) {
+                            console.log(data); // output the text to the console
+                            fshader = data;
+                            count += 1;
+                            addCoolCube(); // we will write this method
+                        },
+                // onProgress callback
+                    function (xhr) {
+                        console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+                    },
+                // onError callback
+                    function (err) {
+                        console.error('An error happened');
+                    });
+
             // setup the scene
                   var scene = new THREE.Scene();
                   var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
                   var renderer = new THREE.WebGLRenderer();
                   renderer.setSize(window.innerWidth, window.innerHeight);
                   document.body.appendChild(renderer.domElement);
-            camera.position.z = 5;
+                  camera.position.z = 5;
             
             // setup the cube
                   var geometry = new THREE.BoxGeometry();
                   var material = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x00ff00, shininess: 30 });
                   var cube = new THREE.Mesh( geometry, material );
-                 scene.add(cube);
+                  scene.add(cube);
+
+            // setup the other materials cube //pulled from https://github.com/mrdoob/three.js/blob/master/examples/webgl_materials.html
+                 var texture = new THREE.Texture( generateTexture() );
+				 texture.needsUpdate = true;
+                  var geometry3 = new THREE.BoxGeometry();
+                  var material3 = new THREE.MeshLambertMaterial( { map: texture, transparent: true } );
+                  var cube3 = new THREE.Mesh( geometry3, material3 );
+                  cube3.position.x = -4;
+                  scene.add(cube3);
 
             // add the light
             var light = new THREE.PointLight(0xffffff, 1, 1000);
@@ -99,14 +145,47 @@
                 geometry.rotateX(0.01);
                 geometry.rotateY(0.01);
 
+                geometry3.rotateX(0.01);
+                geometry3.rotateY(0.01);
+
                 if(geometry1) {
                     geometry1.rotateX(0.01);
                     geometry1.rotateY(0.01);
                 }
 
+                if(geometry2) {
+                    geometry2.rotateX(0.01);
+                    geometry2.rotateY(0.01);
+                }
+
                 renderer.render(scene, camera);
             }
             animate();
+
+            //pulled from https://github.com/mrdoob/three.js/blob/master/examples/webgl_materials.html
+            function generateTexture() {
+                var canvas = document.createElement( 'canvas' );
+                canvas.width = 256;
+                canvas.height = 256;
+
+                var context = canvas.getContext( '2d' );
+                var image = context.getImageData( 0, 0, 256, 256 );
+
+                var x = 0, y = 0;
+
+                for ( var i = 0, j = 0, l = image.data.length; i < l; i += 4, j ++ ) {
+                    x = j % 256;
+                    y = x == 0 ? y + 1 : y;
+
+                    image.data[ i ] = 255;
+                    image.data[ i + 1 ] = 255;
+                    image.data[ i + 2 ] = 255;
+                    image.data[ i + 3 ] = Math.floor( x ^ y );
+                }
+                context.putImageData( image, 0, 0 );
+
+                return canvas;
+            }
 
         </script>
     </body>
