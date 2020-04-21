@@ -35,7 +35,8 @@
                         vertexShader: vshader,
                         precision: "mediump"});
                     mesh1 = new THREE.Mesh(geometry1, material1);
-                    mesh1.position.x = 2;
+                    mesh1.position.x = -1.5;
+                    mesh1.position.y = -0.5;
                     scene.add(mesh1);
                 }
                 if(count == 3) {
@@ -53,7 +54,7 @@
                         vertexShader: vshader,
                         precision: "mediump"});
                     mesh2 = new THREE.Mesh(geometry2, material2);
-                    mesh2.position.x = -2;
+                    mesh2.position.x = 2;
                     scene.add(mesh2);
                 }
             }
@@ -124,15 +125,16 @@
                   var geometry = new THREE.BoxGeometry();
                   var material = new THREE.MeshPhongMaterial( { color: 0xdddddd, specular: 0x00ff00, shininess: 30 });
                   var cube = new THREE.Mesh( geometry, material );
+                  cube.position.x = -4;
                   scene.add(cube);
 
             // setup the other materials cube //pulled from https://github.com/mrdoob/three.js/blob/master/examples/webgl_materials.html
                  var texture = new THREE.Texture( generateTexture() );
 				 texture.needsUpdate = true;
                   var geometry3 = new THREE.BoxGeometry();
-                  var material3 = new THREE.MeshLambertMaterial( { map: texture, transparent: true } );
+                  var material3 = new THREE.MeshPhongMaterial( { color: 0x80f252, specular: 0xdefaf6, shininess: 5, opacity: 0.5, transparent: true } );
                   var cube3 = new THREE.Mesh( geometry3, material3 );
-                  cube3.position.x = -4;
+                  cube3.position.x = -2;
                   scene.add(cube3);
 
             // add the light
