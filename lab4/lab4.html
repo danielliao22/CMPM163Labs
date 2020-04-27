@@ -22,9 +22,24 @@
             // setup the cube
                 var geometry = new THREE.BoxGeometry();
                 var texture = THREE.ImageUtils.loadTexture("196.jpg");
-                var material = new THREE.MeshPhongMaterial( { map: texture } );
+                var normMap = THREE.ImageUtils.loadTexture("196_norm.jpg");
+                var material = new THREE.MeshPhongMaterial({map: texture, normalMap: normMap});
                 var cube = new THREE.Mesh(geometry, material);
                 scene.add(cube);
+
+            // setup cube2
+                material = new THREE.MeshPhongMaterial( { map: texture });
+                var cube2 = new THREE.Mesh(geometry, material);
+                scene.add(cube2);
+                cube2.position.x -= 2;
+
+            // setup cube3
+                texture = THREE.ImageUtils.loadTexture("188.jpg");
+                normMap = THREE.ImageUtils.loadTexture("188_norm.jpg");
+                material = new THREE.MeshPhongMaterial( {map: texture, normalMap: normMap});
+                var cube3 = new THREE.Mesh(geometry, material);
+                scene.add(cube3);
+                cube3.position.x = 2;
 
             // add the light
                 var light = new THREE.PointLight(0xffffff, 1, 1000);
@@ -35,17 +50,19 @@
             function animate() {
                 requestAnimationFrame(animate);
                 renderer.render(scene, camera);
-                if(light.position.x == 10){
+                if(light.position.x >= 10){
                     right = false;
                 }
-                else if(light.position.x == -10) {
+                else if(light.position.x <= -10) {
                     right = true;
                 }
                 if(right){
                     light.position.x = light.position.x + 0.3;
+                    console.log('right');
                 }
                 else{
                     light.position.x = light.position.x - 0.3;  
+                    console.log('left');
                 }
             }
             animate();
