@@ -12,27 +12,41 @@
         <script src="../three.js-master/build/three.js"></script>
         <script>
             // setup the scene
-                  var scene = new THREE.Scene();
-                  var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-                  var renderer = new THREE.WebGLRenderer();
-                  renderer.setSize(window.innerWidth, window.innerHeight);
-                  document.body.appendChild(renderer.domElement);
-            camera.position.z = 5;
+                var scene = new THREE.Scene();
+                var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+                var renderer = new THREE.WebGLRenderer();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                document.body.appendChild(renderer.domElement);
+                camera.position.z = 5;
             
             // setup the cube
-var geometry = new THREE.BoxGeometry();
-                  var material = new THREE.MeshPhongMaterial( { color: 0x00ff00 } );
-                  var cube = new THREE.Mesh(geometry, material);
-                 scene.add(cube);
+                var geometry = new THREE.BoxGeometry();
+                var texture = THREE.ImageUtils.loadTexture("196.jpg");
+                var material = new THREE.MeshPhongMaterial( { map: texture } );
+                var cube = new THREE.Mesh(geometry, material);
+                scene.add(cube);
 
             // add the light
-            var light = new THREE.PointLight(0xffffff, 1, 1000);
-            light.position.set(10, 10, 10);
-            scene.add(light);
+                var light = new THREE.PointLight(0xffffff, 1, 1000);
+                light.position.set(0, 10, 10);
+                scene.add(light);
 
+            var right = true;
             function animate() {
                 requestAnimationFrame(animate);
                 renderer.render(scene, camera);
+                if(light.position.x == 10){
+                    right = false;
+                }
+                else if(light.position.x == -10) {
+                    right = true;
+                }
+                if(right){
+                    light.position.x = light.position.x + 0.3;
+                }
+                else{
+                    light.position.x = light.position.x - 0.3;  
+                }
             }
             animate();
 
