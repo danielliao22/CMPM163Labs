@@ -7,3 +7,9 @@ lab3: https://drive.google.com/file/d/1RdRHXOMC5cttd7UUfyJ-HywoeNAkItZN/view?usp
   2nd: MeshPhongMaterial also allows you to adjust opacity which is set to half and i also changed the object color to green and the specular to light blue.
   3rd: I interpolated the colors blue and pink in the frag shader.
   4th: I passed the 'modelViewPosition' vec4 in the vertex shader into the color frag in the frag shader.
+
+
+lab4:
+a) x-coord: floor(7*u)
+b) y-corod: 7-floor(7*u)
+c) Grey
