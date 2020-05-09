@@ -32,7 +32,7 @@ Spotlight- behaves like a flashlight and iluminates all objects within a cone sh
 Directional Light- affects all objects in the scene and is based on rotation and not position.
 Point Light- behaves like a lightbulb and illuminates objects in the scene based on position, not roatation.
 Area Light- only works when baking lightmap. It shines in all directionws to one side of the rectangular plane.
-![](lab6obj.PNG)
+![](lab6obj.png)
 Material: I made the metallic reflective material by making the specular color white and setting smoothnesss high but not all the way to 1. The rendering mode of the material was also opaque.
 
 Texture: one texture is a sampled image of a pile of wood chips, the other is a sample of up close grass.
