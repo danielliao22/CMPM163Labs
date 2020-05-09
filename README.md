@@ -22,3 +22,19 @@ Cube 5: Similar setup to cube 4, but in the fragment shader I modulus the u and 
 
 lab5: https://drive.google.com/file/d/1bdhOc8nwwm7Q3gOPizkdtjOXxPIP7__9/view?usp=sharing
 MODS: Added rainbow trail on wheels, made the game objective knocking pins down that explode, made a segment of the track bumpy, and applied a glowy effect to the entire scene.
+
+
+
+
+lab6: 
+![](lab6.PNG)
+Spotlight- behaves like a flashlight and iluminates all objects within a cone shape. It responds to both rotation and position.
+Directional Light- affects all objects in the scene and is based on rotation and not position.
+Point Light- behaves like a lightbulb and illuminates objects in the scene based on position, not roatation.
+Area Light- only works when baking lightmap. It shines in all directionws to one side of the rectangular plane.
+![](lab6obj.PNG)
+Material: I made the metallic reflective material by making the specular color white and setting smoothnesss high but not all the way to 1. The rendering mode of the material was also opaque.
+
+Texture: one texture is a sampled image of a pile of wood chips, the other is a sample of up close grass.
+
+Skybox: The skybox is a cosmos design created by SkySerie and was added into the scene by setting the Skybox material of Lighting to it.
