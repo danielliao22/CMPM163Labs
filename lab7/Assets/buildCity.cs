@@ -11,9 +11,10 @@ public class buildCity : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        float seed = Random.Range(0, 100);
         for(int h = 0; h < mapHeight; h++){
             for(int w = 0; w < mapWidth; w++){
-                int result = (int) (Mathf.PerlinNoise(w/10.0f,h/10.0f)*10);
+                int result = (int) (Mathf.PerlinNoise(w/10.0f + seed, h/10.0f + seed)*10);
                 Vector3 pos = new Vector3(w*buildingFootprint, 0, h*buildingFootprint);
                 //loat height = buildings[1].height;
                 if(result < 2)
