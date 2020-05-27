@@ -38,3 +38,13 @@ Material: I made the metallic reflective material by making the specular color w
 Texture: one texture is a sampled image of a pile of wood chips, the other is a sample of up close grass.
 
 Skybox: The skybox is a cosmos design created by SkySerie and was added into the scene by setting the Skybox material of Lighting to it.
+
+
+lab8:
+Inspiration:
+![](nighttime.jpg)
+Generated City:
+![](generatedCity.PNG)
+The inspiration had me include a halo affect on each model to imitate nighttime lighting.
+
+Could not get a hold on my partner and we did not help each other out.
