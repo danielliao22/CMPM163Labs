@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 477244}
   - component: {fileID: 3352102}
   - component: {fileID: 2333288}
+  - component: {fileID: -3784565693607663589}
   m_Layer: 0
   m_Name: 4
   m_TagString: Untagged
@@ -82,3 +83,15 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!122 &-3784565693607663589
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164186}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4286054320
+  m_Size: 24.8
