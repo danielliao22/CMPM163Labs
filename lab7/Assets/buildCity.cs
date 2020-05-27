@@ -17,7 +17,6 @@ public class buildCity : MonoBehaviour {
             for(int w = 0; w < mapWidth; w++){
                 int result = (int) (Mathf.PerlinNoise(w/10.0f + seed, h/10.0f + seed)*10);
                 Vector3 pos = new Vector3(w*buildingFootprint, 0, h*buildingFootprint);
-                float height = buildings[1].height;
                 if(result < 2)
                     Instantiate(buildings[0],pos,Quaternion.identity);
                 else if(result < 4)
