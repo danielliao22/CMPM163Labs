@@ -47,4 +47,4 @@ Generated City:
 ![](generatedCity.PNG)
 The inspiration had me include a halo affect on each model to imitate nighttime lighting.
 
-Could not get a hold on my partner and we did not help each other out.
+Jiabin Zhang, my partner, replaced his generated street with a river and messeed with the building distribution.
